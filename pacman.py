@@ -101,15 +101,16 @@ def world():
             square(x, y)
 
             if tile == 1:
-		 path.up() 
-	         path.goto(x + 7, y + 7)
-	         path.color('orange')     
-	         path.begin_fill()  
-	         for count in range(4):   
-		      path.forward(6) 
-	              path.left(90) 
-	         path.end_fill() 
-                 path.color('blue')
+                path.up()
+                path.goto(x + 7, y + 7)
+                path.color("orange")
+                path.begin_fill()
+                for count in range(4):
+                    path.forward(6)
+                    path.left(90)
+                path.end_fill()
+                path.color("blue")
+
 
 def move():
     """Move pacman and all ghosts."""
