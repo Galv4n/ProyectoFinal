@@ -19,6 +19,7 @@ path = Turtle(visible=False)
 writer = Turtle(visible=False)
 aim = vector(5, 0)
 pacman = vector(-40, -80)
+#Los fantasmas se mueven 10 pixeles por paso (originalmente 5) para hacerlos mas rapidos que pacman
 ghosts = [
     [vector(-180, 160), vector(10, 0)],
     [vector(-180, -160), vector(0, 10)],
@@ -26,6 +27,7 @@ ghosts = [
     [vector(100, -160), vector(-10, 0)],
 ]
 # fmt: off
+#Tablero modificado, nuevo laberinto 0=pared 1=camino con comida
 tiles = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0,
@@ -99,7 +101,8 @@ def world():
             x = (index % 20) * 20 - 200
             y = 180 - (index // 20) * 20
             square(x, y)
-
+            
+            #La comida es ahora un punto naranja en vez de uno blanco
             if tile == 1:
                 path.up()
                 path.goto(x + 7, y + 7)
@@ -139,6 +142,7 @@ def move():
         if valid(point + course):
             point.move(course)
         else:
+            #Las direcciones de los fantasmas tambien usan 10 pixeles para mantenerla nueva velocidad
             options = [
                 vector(10, 0),
                 vector(-10, 0),
